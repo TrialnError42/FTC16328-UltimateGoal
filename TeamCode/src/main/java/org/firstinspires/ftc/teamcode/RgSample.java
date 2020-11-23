@@ -29,18 +29,18 @@ public class RgSample extends LinearOpMode {
 
         telemetry.addData("Status", "Running");
         telemetry.update();
-/*
-        robot.servoClawPivot.setPosition(robot.CLAW_PIVOT_STRAIGHT_POS);
-        motorPosOffset = robot.motorArm.getCurrentPosition();
-*/
+
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
             driveControl();
             shooterControl();
             shooterControl();
             intakeControl();
+            storageControl();
         }
     }
+
+    // intake power increase and decrease
 /*
     private boolean lastTriggerPress = true;
     private double motorSpeed = 1;
@@ -75,7 +75,7 @@ public class RgSample extends LinearOpMode {
         telemetry.update();
     }
 */
-        private void intakeControl() {
+    private void intakeControl() {
             if (gamepad1.right_bumper) {
                 robot.motorIntake.setPower(1);
             } else if (gamepad1.right_trigger > 0.5) {
@@ -99,11 +99,11 @@ public class RgSample extends LinearOpMode {
     }
 
     private boolean prevAPress = true;
-    private boolean isFlapDown = true;
-    private void flapControl() {
+    private boolean isStorageDown = true;
+    private void storageControl() {
         if (gamepad1.a && !prevAPress) {
-            isFlapDown = !isFlapDown;
-           // robot.setFlaps(isFlapDown);
+            isStorageDown = !isStorageDown;
+            robot.setStorage(isStorageDown);
 
         }
         prevAPress = gamepad1.a;

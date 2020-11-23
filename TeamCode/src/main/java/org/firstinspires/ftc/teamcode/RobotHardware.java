@@ -17,54 +17,21 @@ public class RobotHardware {
     public DcMotor motorBL;
     public DcMotor motorBR;
 
-   public DcMotor motorIntake;
+    public DcMotor motorIntake;
 
-   public DcMotor motorShooter;
+    public DcMotor motorShooter;
 
-
-    public static final double LEFT_FLAP_UP_POS     = 0.18;
-    public static final double LEFT_FLAP_DOWN_POS   = 0.41;
-    public static final double RIGHT_FLAP_UP_POS    = 1.00;
-    public static final double RIGHT_FLAP_DOWN_POS  = 0.77;
-
-    public static final double CLAW_INIT_POS = 1.0;
-    public static final double CLAW_OPEN_POS = 0.50;
-    public static final double CLAW_CLOSE_POS =  0.90;
-
-    public static final double CLAW_PIVOT_INIT_POS = 0.13;
-    public static final double CLAW_PIVOT_SKYBRIDGE_POS = 0.70;
-    public static final double CLAW_PIVOT_SKYSTONE_APPROACH_POS = 0.66; // was .69
-    public static final double CLAW_PIVOT_SKYSTONE_GRAB_POS = 0.62; // was .65
-    public static final double CLAW_PIVOT_STRAIGHT_POS = 0.52;
-    public static final double CLAW_PIVOT_MOTOR_MOD = -6800;
-    public static final double CLAW_PIVOT_MAX_POS = 1.0;
-    public static final double CLAW_PIVOT_MIN_POS = 0.2;
-
-    public static final double ARM_POWER_SLOW  = 0.2;
-    public static final double ARM_POWER_FAST  = 0.5;
+    public Servo servoStorage;
 
     public static final double SHOOTER_AUTO_TICKS = 1;
-    public static final double ARM_AUTO_UP_SPEED = 0.5;
-    public static final double ARM_AUTO_TO_TELEOP_ENC_TICKS = 5350;
-    public static final double ARM_AUTO_TO_SKYSTONE_ENC_TICKS = 5600;// it was 5500
-    public static final double ARM_AUTO_UP_POS_ENC_TICKS = 1000;
-    public static final double ARMEXTENSION_AUTO_UP_SPEED = 2000;
-    public static final double ARMEXTENSION_AUTO_DOWN_SPEED = 2000;
-    public static final double INTAKE_ROTATE = 5000;
 
+    public static final double INTAKE_ROTATE = 5000;
 
     public static final double WHEEL_DIAMETER = 4.0;
     public static final double DRIVE_MOTOR_TICKS_PER_ROTATION = 537.6;
 
-    public static final double AUTO_SKYSTONE_BITMAP_WAITING_TIMOUT_MS = 5000;
-    public static final int AUTO_SKYSTONE_NO_BITMAP_DEFAULT_POS = 2;
-
-    public static final int AUTO_SKYSTONE_SEARCH_X = 924;
-    public static final int AUTO_SKYSTONE_SEARCH_W = 38;
-    public static final int AUTO_SKYSTONE_SEARCH_POS_1_Y = 566;
-    public static final int AUTO_SKYSTONE_SEARCH_POS_2_Y = 300;
-    public static final int AUTO_SKYSTONE_SEARCH_POS_3_Y = 38;
-    public static final int AUTO_SKYSTONE_SEARCH_H = 76;
+    public static final double STORAGE_LIFT_DOWN_POS = 0.5;
+    public static final double STORAGE_LIFT_UP_POS = 0.5;
 
     private HardwareMap hardwareMap = null;
 
@@ -156,16 +123,14 @@ public class RobotHardware {
         motorBR.setPower(0);
     }
 
-   /* public void setFlaps(boolean isDown) {
+    public void setStorage(boolean isDown) {
         if (isDown) {
-            servoRClamp.setPosition(RIGHT_FLAP_DOWN_POS);
-            servoLClamp.setPosition(LEFT_FLAP_DOWN_POS);
+            servoStorage.setPosition(STORAGE_LIFT_DOWN_POS);
         } else {
-            servoRClamp.setPosition(RIGHT_FLAP_UP_POS);
-            servoLClamp.setPosition(LEFT_FLAP_UP_POS);
+            servoStorage.setPosition(STORAGE_LIFT_UP_POS);
         }
     }
-*/
+
     public void resetDriveEncoders() {
         motorFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);

@@ -20,9 +20,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class AutoCommon extends LinearOpMode {
+public class    AutoCommon extends LinearOpMode {
 
-    protected RobotHardware robot;
+   protected RobotHardware robot;
 
     @Override
     public void runOpMode() {
