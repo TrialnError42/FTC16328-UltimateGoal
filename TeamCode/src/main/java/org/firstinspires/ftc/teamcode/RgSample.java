@@ -37,6 +37,7 @@ public class RgSample extends LinearOpMode {
             shooterControl();
             intakeControl();
             storageControl();
+            positionControl();
         }
     }
 
@@ -117,16 +118,13 @@ public class RgSample extends LinearOpMode {
         } else if (gamepad1.dpad_down) {
             robot.motorShooter.setPower(0);
         }
+
+
+
+    }
+    private void positionControl() {
         if (gamepad1.b) {
-            motorPosOffset = robot.motorShooter.getCurrentPosition();
+            robot.startMove(0, 0, 90, 1);
         }
-
-
-
-        telemetry.addData("Motor Pos", robot.motorShooter.getCurrentPosition());
-        telemetry.update();
-
-
-
     }
 }
